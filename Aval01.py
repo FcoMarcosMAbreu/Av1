@@ -1,20 +1,19 @@
 from bs4 import BeautifulSoup
 import requests
+import re
 
 # keyword = 'instituto'
-keyword = 'github'
+keyword = 'jekill'
 # url = 'http://www.ifpi.edu.br/'
 url = 'http://pages.github.com/'
 deth = 4
 
 response = requests.get(url)
 html = BeautifulSoup(response.text, 'html.parser')
-ocorrencia = 0
-for palavra in html:
-    oc = palavra.find(keyword)
-    ocorrencia+=1
-    o = str(ocorrencia)
-    print(o, palavra, '\n')
+links = html.find_all(keyword)
+for link in links:
+    print(link[' '])
+
 
 """ def search(keyword, url, deth):
     response = requests.get(url)
